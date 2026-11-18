@@ -23,8 +23,12 @@ jobs:
           distribution: temurin
           java-version: '17'
 
-      - name: Preparar el SDK de Android
-        uses: android-actions/setup-android@v3
+      - name: Aceptar licencias del SDK de Android
+        run: |
+          echo "SDK en: $ANDROID_SDK_ROOT"
+          SDKM=$(find "$ANDROID_SDK_ROOT/cmdline-tools" -name sdkmanager -type f | head -1)
+          if [ -n "$SDKM" ]; then yes | "$SDKM" --licenses > /dev/null 2>&1 || true; fi
+          ls "$ANDROID_SDK_ROOT/platforms" || true
 
       - name: Preparar Gradle
         uses: gradle/actions/setup-gradle@v4
