@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="AppTheme" parent="Theme.AppCompat.NoActionBar">
+        <item name="colorPrimary">@color/accent</item>
+        <item name="colorPrimaryDark">@color/bg</item>
+        <item name="colorAccent">@color/accent</item>
+        <item name="android:windowBackground">@color/bg</item>
+        <item name="android:statusBarColor">@color/bg</item>
+        <item name="android:navigationBarColor">@color/bg</item>
+        <item name="android:textColor">@color/txt</item>
+        <item name="android:textColorPrimary">@color/txt</item>
+        <item name="android:textColorSecondary">@color/dim</item>
+    </style>
+
+    <style name="RingTheme" parent="AppTheme">
+        <item name="android:windowBackground">@color/ringbg</item>
+        <item name="android:statusBarColor">@color/ringbg</item>
+        <item name="android:navigationBarColor">@color/ringbg</item>
+    </style>
+
+    <style name="Etiqueta">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/dim</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:paddingBottom">6dp</item>
+    </style>
+</resources>

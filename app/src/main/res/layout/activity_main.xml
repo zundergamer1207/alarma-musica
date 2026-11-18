@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/bg"
+    android:padding="18dp">
+
+    <TextView
+        android:id="@+id/clock"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="--:--"
+        android:textColor="@color/txt"
+        android:textSize="56sp"
+        android:fontFamily="sans-serif-light"
+        android:paddingTop="10dp" />
+
+    <TextView
+        android:id="@+id/today"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textColor="@color/dim"
+        android:textSize="13sp"
+        android:paddingBottom="14dp" />
+
+    <TextView
+        android:id="@+id/btnPerms"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:background="@drawable/bg_warn"
+        android:text="⚠  Toca aquí: falta un permiso para que la alarma suene puntual"
+        android:textColor="@color/accent"
+        android:textSize="12.5sp"
+        android:padding="12dp"
+        android:layout_marginBottom="12dp" />
+
+    <Button
+        android:id="@+id/btnNew"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="+  Nueva alarma"
+        android:textColor="#1A1208"
+        android:textStyle="bold"
+        android:textAllCaps="false"
+        android:background="@drawable/btn_primary"
+        android:layout_marginBottom="14dp" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/emptyText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_card"
+                android:gravity="center"
+                android:padding="26dp"
+                android:lineSpacingExtra="5dp"
+                android:text="Aún no tienes alarmas.\n\nToca «Nueva alarma», elige la hora y tu canción."
+                android:textColor="@color/dim"
+                android:textSize="13.5sp" />
+
+            <LinearLayout
+                android:id="@+id/alarmList"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:paddingTop="18dp"
+                android:paddingBottom="8dp"
+                android:lineSpacingExtra="3dp"
+                android:text="Todo se guarda solo en este teléfono.\nSin cuenta, sin internet."
+                android:textColor="@color/dim"
+                android:textSize="11.5sp" />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

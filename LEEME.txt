@@ -1,0 +1,80 @@
+ALARMA — app nativa de Android (APK real)
+=========================================
+
+Esto NO es una página web. Es una app Android de verdad:
+se instala como cualquier otra, aparece en tu lista de apps,
+y usa AlarmManager.setAlarmClock(), la misma vía de máxima
+prioridad que usa el reloj del sistema. Suena con la pantalla
+apagada, con la app cerrada y en modo ahorro de batería.
+
+Qué hace
+--------
+- Varias alarmas, cada una con hora, nombre y días de repetición
+- Eliges CUALQUIER canción del teléfono como sonido de alarma
+- Volumen por alarma, subida gradual y repetición en bucle
+- Pantalla completa al sonar, encima del bloqueo: Apagar / Posponer 5 min
+- Botón de posponer también en la notificación
+- Se reprograma sola después de reiniciar el teléfono
+- Todo se guarda en el teléfono. Sin internet, sin cuenta, sin permisos raros.
+
+
+=========================================================
+CÓMO OBTENER EL APK — ELIGE UNA RUTA
+=========================================================
+
+RUTA A — SIN COMPUTADORA (GitHub compila por ti, gratis)
+--------------------------------------------------------
+1. Crea una cuenta en github.com si no tienes.
+2. Crea un repositorio nuevo, por ejemplo "alarma", PÚBLICO.
+3. Sube el contenido de esta carpeta al repositorio
+   (Add file > Upload files; si subes desde el celular, usa el
+   modo escritorio del navegador y arrastra los archivos
+   respetando las carpetas).
+4. Entra a la pestaña "Actions" del repositorio y confirma que
+   se permita ejecutar los flujos de trabajo.
+5. El flujo "Compilar APK" arranca solo. Tarda unos 4 minutos.
+6. Cuando termine, ve a la pestaña "Releases" del repositorio:
+   ahí está "Alarma.apk" con enlace directo.
+7. Abre ese enlace DESDE EL CELULAR y descarga el APK.
+
+RUTA B — CON COMPUTADORA (Android Studio)
+-----------------------------------------
+1. Instala Android Studio (gratis, developer.android.com/studio).
+2. File > Open… y abre esta carpeta (AlarmaMusica).
+3. Espera a que termine de sincronizar Gradle.
+4. Conecta el teléfono por USB con "Depuración USB" activada.
+5. Pulsa el botón Run (▶). Se instala sola en el teléfono.
+   Para generar el archivo suelto: Build > Build Bundle(s)/APK(s) > Build APK(s).
+   Queda en app/build/outputs/apk/debug/app-debug.apk
+
+
+=========================================================
+CÓMO INSTALAR EL APK EN EL TELÉFONO
+=========================================================
+1. Descarga Alarma.apk en el teléfono.
+2. Ábrelo desde la barra de notificaciones o desde "Archivos > Descargas".
+3. Android dirá que no puede instalar apps de esta fuente:
+   toca "Ajustes" > activa "Permitir desde esta fuente" > Atrás.
+4. Instalar > Abrir.
+5. La primera vez, la app te pedirá:
+   - permiso de notificaciones -> Permitir
+   - alarmas exactas -> Permitir
+   - batería sin restricciones -> Permitir
+   Si no aparece, toca el aviso naranja dentro de la app.
+
+Nota: el APK va firmado con la clave de depuración. Es normal el
+aviso de "app no verificada por Play Protect"; toca "Instalar de
+todas formas". Es tu propia app compilada por ti.
+
+
+Estructura del proyecto
+-----------------------
+app/src/main/java/com/oscarpolonio/alarma/
+    Alarm.kt             modelo de datos + guardado local
+    AlarmScheduler.kt    programación con AlarmManager
+    AlarmReceiver.kt     recibe el disparo y el arranque del sistema
+    AlarmService.kt      servicio que reproduce la música
+    RingActivity.kt      pantalla de "sonando"
+    MainActivity.kt      lista de alarmas
+    EditAlarmActivity.kt crear/editar alarma y elegir canción
+.github/workflows/build-apk.yml   compilación automática en la nube

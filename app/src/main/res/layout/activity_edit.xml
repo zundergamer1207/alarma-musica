@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg"
+    android:scrollbars="none">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="18dp">
+
+        <TimePicker
+            android:id="@+id/timePicker"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:timePickerMode="spinner"
+            android:layout_marginBottom="16dp" />
+
+        <TextView
+            style="@style/Etiqueta"
+            android:text="Nombre" />
+
+        <EditText
+            android:id="@+id/labelField"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_field"
+            android:hint="Despertar"
+            android:textColorHint="@color/dim"
+            android:textColor="@color/txt"
+            android:textSize="15sp"
+            android:padding="13dp"
+            android:inputType="text"
+            android:maxLength="40"
+            android:layout_marginBottom="16dp" />
+
+        <TextView
+            style="@style/Etiqueta"
+            android:text="Repetir" />
+
+        <LinearLayout
+            android:id="@+id/dayRow"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" />
+
+        <TextView
+            android:id="@+id/dayHint"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/dim"
+            android:textSize="11.5sp"
+            android:paddingTop="8dp"
+            android:layout_marginBottom="16dp" />
+
+        <TextView
+            style="@style/Etiqueta"
+            android:text="Música" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:background="@drawable/bg_field"
+            android:padding="13dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="♪"
+                android:textColor="@color/accent"
+                android:textSize="22sp"
+                android:layout_marginEnd="12dp" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/soundTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/txt"
+                    android:textSize="13.5sp"
+                    android:textStyle="bold"
+                    android:maxLines="1"
+                    android:ellipsize="end" />
+
+                <TextView
+                    android:id="@+id/soundSub"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/dim"
+                    android:textSize="11.5sp" />
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/btnTest"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="▶ Probar"
+                android:textAllCaps="false"
+                android:textSize="12sp"
+                android:textColor="@color/txt"
+                android:background="@drawable/bg_card" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btnPick"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Elegir canción del teléfono"
+            android:textAllCaps="false"
+            android:textColor="@color/txt"
+            android:background="@drawable/bg_card"
+            android:layout_marginTop="9dp" />
+
+        <TextView
+            android:id="@+id/btnDefault"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Usar el tono de alarma del sistema"
+            android:textColor="@color/accent"
+            android:textSize="12.5sp"
+            android:gravity="center"
+            android:padding="12dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:layout_marginBottom="10dp" />
+
+        <TextView
+            style="@style/Etiqueta"
+            android:id="@+id/volLabel"
+            android:text="Volumen" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="10dp">
+
+            <SeekBar
+                android:id="@+id/volBar"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:max="100" />
+
+            <TextView
+                android:id="@+id/volText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="80%"
+                android:textColor="@color/accent"
+                android:textSize="13sp"
+                android:layout_marginStart="10dp" />
+        </LinearLayout>
+
+        <androidx.appcompat.widget.SwitchCompat
+            android:id="@+id/swFade"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Subir el volumen poco a poco"
+            android:textColor="@color/txt"
+            android:textSize="13.5sp"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp" />
+
+        <androidx.appcompat.widget.SwitchCompat
+            android:id="@+id/swLoop"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Repetir la canción hasta apagarla"
+            android:textColor="@color/txt"
+            android:textSize="13.5sp"
+            android:paddingTop="8dp"
+            android:paddingBottom="16dp" />
+
+        <Button
+            android:id="@+id/btnSave"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Guardar alarma"
+            android:textAllCaps="false"
+            android:textStyle="bold"
+            android:textColor="#1A1208"
+            android:background="@drawable/btn_primary" />
+
+        <TextView
+            android:id="@+id/btnDelete"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Eliminar esta alarma"
+            android:textColor="@color/danger"
+            android:textSize="13sp"
+            android:gravity="center"
+            android:padding="16dp"
+            android:clickable="true"
+            android:focusable="true" />
+    </LinearLayout>
+</ScrollView>
