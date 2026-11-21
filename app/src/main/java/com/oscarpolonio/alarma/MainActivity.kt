@@ -182,6 +182,7 @@ class MainActivity : AppCompatActivity() {
 
             val sub = StringBuilder(a.daysText())
             sub.append(" · ♪ ").append(a.soundName)
+            if (a.roulette > 0) sub.append(" · ").append(a.ruletaText())
             if (a.enabled) {
                 val t = AlarmScheduler.inText(a)
                 if (t.isNotEmpty()) sub.append(" · ").append(t)

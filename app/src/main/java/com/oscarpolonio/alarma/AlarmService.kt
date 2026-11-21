@@ -114,7 +114,7 @@ class AlarmService : Service() {
             PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
         )
 
-        return NotificationCompat.Builder(this, CHANNEL)
+        val b = NotificationCompat.Builder(this, CHANNEL)
             .setSmallIcon(R.drawable.ic_alarma)
             .setContentTitle("⏰ ${a.timeText()} · ${a.label}")
             .setContentText("♪ ${a.soundName}")
@@ -125,9 +125,12 @@ class AlarmService : Service() {
             .setAutoCancel(false)
             .setFullScreenIntent(full, true)
             .setContentIntent(full)
-            .addAction(0, "Apagar", stop)
-            .addAction(0, "Posponer $SNOOZE_MIN min", snooze)
-            .build()
+
+        // Con la ruleta activa, apagar desde la notificación sería hacer trampa
+        if (a.roulette == 0) b.addAction(0, "Apagar", stop)
+        b.addAction(0, "Posponer $SNOOZE_MIN min", snooze)
+
+        return b.build()
     }
 
     private fun startForegroundSafe(n: Notification) {
@@ -278,7 +281,8 @@ class AlarmService : Service() {
             fade = false,
             loop = base.loop,
             enabled = true,
-            temp = true
+            temp = true,
+            roulette = base.roulette
         )
         AlarmStore.upsert(this, temp)
         AlarmScheduler.schedule(this, temp)

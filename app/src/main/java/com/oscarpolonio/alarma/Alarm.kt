@@ -17,10 +17,18 @@ data class Alarm(
     var fade: Boolean = true,
     var loop: Boolean = true,
     var enabled: Boolean = true,
-    var temp: Boolean = false
+    var temp: Boolean = false,
+    /** 0 = sin ruleta, 1 = ruleta (1 casilla apaga), 2 = ruleta rusa (5 de 6 apagan) */
+    var roulette: Int = 0
 ) {
 
     fun timeText(): String = String.format("%02d:%02d", hour, minute)
+
+    fun ruletaText(): String = when (roulette) {
+        1 -> "🎰 ruleta"
+        2 -> "🎰 ruleta rusa"
+        else -> ""
+    }
 
     fun daysText(): String {
         if (days.isEmpty()) return "Una vez"
@@ -47,6 +55,7 @@ data class Alarm(
         o.put("loop", loop)
         o.put("enabled", enabled)
         o.put("temp", temp)
+        o.put("roulette", roulette)
         return o
     }
 
@@ -68,7 +77,8 @@ data class Alarm(
                 fade = o.optBoolean("fade", true),
                 loop = o.optBoolean("loop", true),
                 enabled = o.optBoolean("enabled", true),
-                temp = o.optBoolean("temp", false)
+                temp = o.optBoolean("temp", false),
+                roulette = o.optInt("roulette", 0)
             )
         }
     }

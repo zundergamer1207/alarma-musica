@@ -93,6 +93,7 @@ class EditAlarmActivity : AppCompatActivity() {
 
         labelField.setText(alarm.label)
         construirDias()
+        construirRuleta()
         pintarSonido()
 
         volBar.progress = alarm.volume
@@ -166,6 +167,52 @@ class EditAlarmActivity : AppCompatActivity() {
         findViewById<TextView>(R.id.dayHint).text =
             if (alarm.days.isEmpty()) "Sin días marcados suena una sola vez."
             else "Se repite: " + alarm.daysText()
+    }
+
+    // ---------------- ruleta ----------------
+
+    private val ruletaViews = ArrayList<TextView>()
+
+    private fun construirRuleta() {
+        val fila = findViewById<LinearLayout>(R.id.ruletaRow)
+        fila.removeAllViews()
+        ruletaViews.clear()
+
+        val nombres = arrayOf("Sin ruleta", "Ruleta", "Ruleta rusa")
+        for (modo in 0..2) {
+            val tv = TextView(this)
+            val lp = LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.WRAP_CONTENT, 1f)
+            lp.setMargins(6, 0, 6, 0)
+            tv.layoutParams = lp
+            tv.text = nombres[modo]
+            tv.gravity = Gravity.CENTER
+            tv.setPadding(0, 26, 0, 26)
+            tv.textSize = 12.5f
+            tv.setBackgroundResource(R.drawable.bg_day)
+            tv.isSelected = alarm.roulette == modo
+            pintarDia(tv)
+            tv.setOnClickListener {
+                alarm.roulette = modo
+                ruletaViews.forEach {
+                    it.isSelected = false
+                    pintarDia(it)
+                }
+                tv.isSelected = true
+                pintarDia(tv)
+                pintarPistaRuleta()
+            }
+            ruletaViews.add(tv)
+            fila.addView(tv)
+        }
+        pintarPistaRuleta()
+    }
+
+    private fun pintarPistaRuleta() {
+        findViewById<TextView>(R.id.ruletaHint).text = when (alarm.roulette) {
+            1 -> "Al sonar aparece una ruleta de 6 casillas y solo una apaga la alarma. Giras hasta acertar. El botón Apagar desaparece; Posponer sigue disponible."
+            2 -> "Ruleta rusa: 5 de las 6 casillas apagan la alarma y una no. Si cae en la mala, sigue sonando y giras de nuevo."
+            else -> "La alarma se apaga con el botón normal."
+        }
     }
 
     private fun pintarDia(tv: TextView) {
