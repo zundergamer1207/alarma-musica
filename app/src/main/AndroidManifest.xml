@@ -48,7 +48,7 @@
             android:showWhenLocked="true"
             android:turnScreenOn="true"
             android:taskAffinity=""
-            android:theme="@style/RingTheme" />
+            android:theme="@style/AppTheme" />
 
         <service
             android:name=".AlarmService"
