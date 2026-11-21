@@ -233,7 +233,7 @@ class EditAlarmActivity : AppCompatActivity() {
 
     private fun pintarDia(tv: TextView) {
         tv.setTextColor(
-            ContextCompat.getColor(this, if (tv.isSelected) R.color.accent else R.color.dim)
+            Temas.color(this, if (tv.isSelected) R.attr.acento else R.attr.tenue)
         )
     }
 
