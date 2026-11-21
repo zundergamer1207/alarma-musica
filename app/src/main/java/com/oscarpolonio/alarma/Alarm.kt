@@ -27,6 +27,7 @@ data class Alarm(
     fun ruletaText(): String = when (roulette) {
         1 -> "🎰 ruleta"
         2 -> "🎰 ruleta rusa"
+        3 -> "📳 sacudir"
         else -> ""
     }
 

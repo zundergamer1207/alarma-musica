@@ -1,27 +1,98 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="AppTheme" parent="Theme.AppCompat.NoActionBar">
-        <item name="colorPrimary">@color/accent</item>
-        <item name="colorPrimaryDark">@color/bg</item>
-        <item name="colorAccent">@color/accent</item>
-        <item name="android:windowBackground">@color/bg</item>
-        <item name="android:statusBarColor">@color/bg</item>
-        <item name="android:navigationBarColor">@color/bg</item>
-        <item name="android:textColor">@color/txt</item>
-        <item name="android:textColorPrimary">@color/txt</item>
-        <item name="android:textColorSecondary">@color/dim</item>
+
+    <style name="Base" parent="Theme.AppCompat.NoActionBar">
+        <item name="colorPrimary">?attr/acento</item>
+        <item name="colorPrimaryDark">?attr/fondo</item>
+        <item name="colorAccent">?attr/acento</item>
+        <item name="android:windowBackground">?attr/fondo</item>
+        <item name="android:statusBarColor">?attr/fondo</item>
+        <item name="android:navigationBarColor">?attr/fondo</item>
+        <item name="android:textColor">?attr/texto</item>
+        <item name="android:textColorPrimary">?attr/texto</item>
+        <item name="android:textColorSecondary">?attr/tenue</item>
+        <item name="android:windowAnimationStyle">@style/Animaciones</item>
     </style>
 
-    <style name="RingTheme" parent="AppTheme">
-        <item name="android:windowBackground">@color/ringbg</item>
-        <item name="android:statusBarColor">@color/ringbg</item>
-        <item name="android:navigationBarColor">@color/ringbg</item>
+    <style name="Animaciones" parent="android:Animation.Activity">
+        <item name="android:activityOpenEnterAnimation">@android:anim/fade_in</item>
+        <item name="android:activityOpenExitAnimation">@android:anim/fade_out</item>
+        <item name="android:activityCloseEnterAnimation">@android:anim/fade_in</item>
+        <item name="android:activityCloseExitAnimation">@android:anim/fade_out</item>
     </style>
+
+    <!-- 1. Ámbar (el original) -->
+    <style name="Tema.Ambar" parent="Base">
+        <item name="acento">#FFB340</item>
+        <item name="acento2">#FF7A59</item>
+        <item name="fondo">#0E1116</item>
+        <item name="tarjeta">#19202A</item>
+        <item name="linea">#242B36</item>
+        <item name="campo">#0F141C</item>
+        <item name="texto">#E8ECF3</item>
+        <item name="tenue">#8B95A6</item>
+        <item name="anillo">#150F0A</item>
+    </style>
+
+    <!-- 2. Neón -->
+    <style name="Tema.Neon" parent="Base">
+        <item name="acento">#A77BFF</item>
+        <item name="acento2">#43E8D8</item>
+        <item name="fondo">#0B0B16</item>
+        <item name="tarjeta">#191732</item>
+        <item name="linea">#2E2A58</item>
+        <item name="campo">#120F24</item>
+        <item name="texto">#EDE9FF</item>
+        <item name="tenue">#948ECB</item>
+        <item name="anillo">#150B26</item>
+    </style>
+
+    <!-- 3. Atardecer -->
+    <style name="Tema.Atardecer" parent="Base">
+        <item name="acento">#FF6B9D</item>
+        <item name="acento2">#FFB36B</item>
+        <item name="fondo">#150B14</item>
+        <item name="tarjeta">#28172C</item>
+        <item name="linea">#3E2544</item>
+        <item name="campo">#1B0F1E</item>
+        <item name="texto">#FFEAF2</item>
+        <item name="tenue">#C295AF</item>
+        <item name="anillo">#200D1C</item>
+    </style>
+
+    <!-- 4. Menta -->
+    <style name="Tema.Menta" parent="Base">
+        <item name="acento">#3DDC97</item>
+        <item name="acento2">#4FD1E0</item>
+        <item name="fondo">#08120F</item>
+        <item name="tarjeta">#14251E</item>
+        <item name="linea">#203B32</item>
+        <item name="campo">#0C1A16</item>
+        <item name="texto">#E6FFF4</item>
+        <item name="tenue">#83AFA0</item>
+        <item name="anillo">#061710</item>
+    </style>
+
+    <!-- 5. Hielo -->
+    <style name="Tema.Hielo" parent="Base">
+        <item name="acento">#5BA8FF</item>
+        <item name="acento2">#8E7BFF</item>
+        <item name="fondo">#0A0F18</item>
+        <item name="tarjeta">#151F2E</item>
+        <item name="linea">#23324D</item>
+        <item name="campo">#0D1522</item>
+        <item name="texto">#E6F0FF</item>
+        <item name="tenue">#8699B5</item>
+        <item name="anillo">#081020</item>
+    </style>
+
+    <!-- Tema por defecto que declara el manifiesto -->
+    <style name="AppTheme" parent="Tema.Ambar" />
 
     <style name="Etiqueta">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:textColor">@color/dim</item>
+        <item name="android:textColor">?attr/tenue</item>
         <item name="android:textSize">12sp</item>
         <item name="android:paddingBottom">6dp</item>
     </style>

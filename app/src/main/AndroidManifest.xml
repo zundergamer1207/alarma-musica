@@ -36,6 +36,11 @@
             android:parentActivityName=".MainActivity" />
 
         <activity
+            android:name=".AjustesActivity"
+            android:exported="false"
+            android:parentActivityName=".MainActivity" />
+
+        <activity
             android:name=".RingActivity"
             android:exported="false"
             android:excludeFromRecents="true"

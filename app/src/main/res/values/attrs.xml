@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Colores que cambian con cada tema -->
+    <attr name="acento" format="color" />
+    <attr name="acento2" format="color" />
+    <attr name="fondo" format="color" />
+    <attr name="tarjeta" format="color" />
+    <attr name="linea" format="color" />
+    <attr name="campo" format="color" />
+    <attr name="texto" format="color" />
+    <attr name="tenue" format="color" />
+    <attr name="anillo" format="color" />
+</resources>

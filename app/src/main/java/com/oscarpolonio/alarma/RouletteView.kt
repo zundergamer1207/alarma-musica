@@ -30,11 +30,17 @@ class RouletteView @JvmOverloads constructor(
     private var angle = 0f
     private var spinning = false
 
-    private val colGana = Color.parseColor("#FFB340")
-    private val colPierde = Color.parseColor("#2A3240")
-    private val colBorde = Color.parseColor("#120D08")
-    private val colTextoGana = Color.parseColor("#1A1208")
-    private val colTextoPierde = Color.parseColor("#8B95A6")
+    private fun delTema(attr: Int, respaldo: String): Int {
+        val c = Temas.color(context, attr)
+        return if (c != 0) c else Color.parseColor(respaldo)
+    }
+
+    // La ruleta se pinta con los colores del tema elegido
+    private val colGana = delTema(R.attr.acento, "#FFB340")
+    private val colPierde = delTema(R.attr.linea, "#2A3240")
+    private val colBorde = delTema(R.attr.anillo, "#120D08")
+    private val colTextoGana = Color.parseColor("#14100A")
+    private val colTextoPierde = delTema(R.attr.tenue, "#8B95A6")
 
     private val relleno = Paint(Paint.ANTI_ALIAS_FLAG).apply { style = Paint.Style.FILL }
     private val borde = Paint(Paint.ANTI_ALIAS_FLAG).apply {

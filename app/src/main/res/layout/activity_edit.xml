@@ -2,7 +2,7 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/bg"
+    android:background="?attr/fondo"
     android:scrollbars="none">
 
     <LinearLayout
@@ -28,8 +28,8 @@
             android:layout_height="wrap_content"
             android:background="@drawable/bg_field"
             android:hint="Despertar"
-            android:textColorHint="@color/dim"
-            android:textColor="@color/txt"
+            android:textColorHint="?attr/tenue"
+            android:textColor="?attr/texto"
             android:textSize="15sp"
             android:padding="13dp"
             android:inputType="text"
@@ -50,7 +50,7 @@
             android:id="@+id/dayHint"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="@color/dim"
+            android:textColor="?attr/tenue"
             android:textSize="11.5sp"
             android:paddingTop="8dp"
             android:layout_marginBottom="16dp" />
@@ -71,7 +71,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="♪"
-                android:textColor="@color/accent"
+                android:textColor="?attr/acento"
                 android:textSize="22sp"
                 android:layout_marginEnd="12dp" />
 
@@ -85,7 +85,7 @@
                     android:id="@+id/soundTitle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/txt"
+                    android:textColor="?attr/texto"
                     android:textSize="13.5sp"
                     android:textStyle="bold"
                     android:maxLines="1"
@@ -95,7 +95,7 @@
                     android:id="@+id/soundSub"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/dim"
+                    android:textColor="?attr/tenue"
                     android:textSize="11.5sp" />
             </LinearLayout>
 
@@ -106,7 +106,7 @@
                 android:text="▶ Probar"
                 android:textAllCaps="false"
                 android:textSize="12sp"
-                android:textColor="@color/txt"
+                android:textColor="?attr/texto"
                 android:background="@drawable/bg_card" />
         </LinearLayout>
 
@@ -116,7 +116,7 @@
             android:layout_height="wrap_content"
             android:text="Elegir canción del teléfono"
             android:textAllCaps="false"
-            android:textColor="@color/txt"
+            android:textColor="?attr/texto"
             android:background="@drawable/bg_card"
             android:layout_marginTop="9dp" />
 
@@ -125,7 +125,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Usar el tono de alarma del sistema"
-            android:textColor="@color/accent"
+            android:textColor="?attr/acento"
             android:textSize="12.5sp"
             android:gravity="center"
             android:padding="12dp"
@@ -157,7 +157,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="80%"
-                android:textColor="@color/accent"
+                android:textColor="?attr/acento"
                 android:textSize="13sp"
                 android:layout_marginStart="10dp" />
         </LinearLayout>
@@ -167,7 +167,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Subir el volumen poco a poco"
-            android:textColor="@color/txt"
+            android:textColor="?attr/texto"
             android:textSize="13.5sp"
             android:paddingTop="8dp"
             android:paddingBottom="8dp" />
@@ -177,14 +177,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Repetir la canción hasta apagarla"
-            android:textColor="@color/txt"
+            android:textColor="?attr/texto"
             android:textSize="13.5sp"
             android:paddingTop="8dp"
             android:paddingBottom="16dp" />
 
         <TextView
             style="@style/Etiqueta"
-            android:text="Ruleta para apagarla" />
+            android:text="Cómo apagarla" />
 
         <LinearLayout
             android:id="@+id/ruletaRow"
@@ -196,7 +196,7 @@
             android:id="@+id/ruletaHint"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="@color/dim"
+            android:textColor="?attr/tenue"
             android:textSize="11.5sp"
             android:lineSpacingExtra="2dp"
             android:paddingTop="8dp"

@@ -3,8 +3,34 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/bg"
+    android:background="?attr/fondo"
     android:padding="18dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Mis alarmas"
+            android:textColor="?attr/tenue"
+            android:textSize="13sp" />
+
+        <TextView
+            android:id="@+id/btnAjustes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="⚙"
+            android:textColor="?attr/acento"
+            android:textSize="21sp"
+            android:padding="8dp"
+            android:clickable="true"
+            android:focusable="true" />
+    </LinearLayout>
 
     <TextView
         android:id="@+id/clock"
@@ -12,17 +38,17 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:text="--:--"
-        android:textColor="@color/txt"
+        android:textColor="?attr/texto"
         android:textSize="56sp"
         android:fontFamily="sans-serif-light"
-        android:paddingTop="10dp" />
+        android:paddingTop="4dp" />
 
     <TextView
         android:id="@+id/today"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:textColor="@color/dim"
+        android:textColor="?attr/tenue"
         android:textSize="13sp"
         android:paddingBottom="14dp" />
 
@@ -33,7 +59,7 @@
         android:visibility="gone"
         android:background="@drawable/bg_warn"
         android:text="⚠  Toca aquí: falta un permiso para que la alarma suene puntual"
-        android:textColor="@color/accent"
+        android:textColor="?attr/acento"
         android:textSize="12.5sp"
         android:padding="12dp"
         android:layout_marginBottom="12dp" />
@@ -69,7 +95,7 @@
                 android:padding="26dp"
                 android:lineSpacingExtra="5dp"
                 android:text="Aún no tienes alarmas.\n\nToca «Nueva alarma», elige la hora y tu canción."
-                android:textColor="@color/dim"
+                android:textColor="?attr/tenue"
                 android:textSize="13.5sp" />
 
             <LinearLayout
@@ -86,7 +112,7 @@
                 android:paddingBottom="8dp"
                 android:lineSpacingExtra="3dp"
                 android:text="Todo se guarda solo en este teléfono.\nSin cuenta, sin internet."
-                android:textColor="@color/dim"
+                android:textColor="?attr/tenue"
                 android:textSize="11.5sp" />
         </LinearLayout>
     </ScrollView>

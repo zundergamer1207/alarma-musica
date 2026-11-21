@@ -59,6 +59,7 @@ class EditAlarmActivity : AppCompatActivity() {
         }
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        Temas.aplicar(this)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_edit)
 
@@ -112,19 +113,30 @@ class EditAlarmActivity : AppCompatActivity() {
         swLoop.isChecked = alarm.loop
 
         findViewById<Button>(R.id.btnPick).setOnClickListener {
+            it.pop()
+            Fx.tap(this)
             elegirCancion.launch(arrayOf("audio/*"))
         }
         findViewById<TextView>(R.id.btnDefault).setOnClickListener {
+            Fx.click(this)
             alarm.soundUri = null
             alarm.soundName = "Sonido por defecto"
             pintarSonido()
         }
-        findViewById<Button>(R.id.btnTest).setOnClickListener { probar() }
-        findViewById<Button>(R.id.btnSave).setOnClickListener { guardar() }
+        findViewById<Button>(R.id.btnTest).setOnClickListener {
+            it.pop()
+            probar()
+        }
+        findViewById<Button>(R.id.btnSave).setOnClickListener {
+            it.pop()
+            Fx.ok(this)
+            guardar()
+        }
 
         val borrar = findViewById<TextView>(R.id.btnDelete)
         borrar.visibility = if (esNueva) View.GONE else View.VISIBLE
         borrar.setOnClickListener {
+            Fx.borrar(this)
             AlarmScheduler.cancel(this, alarm.id)
             AlarmStore.delete(this, alarm.id)
             Toast.makeText(this, "Alarma eliminada", Toast.LENGTH_SHORT).show()
@@ -153,6 +165,7 @@ class EditAlarmActivity : AppCompatActivity() {
             tv.isSelected = alarm.days.contains(diaCalendar)
             pintarDia(tv)
             tv.setOnClickListener {
+                Fx.click(this)
                 if (alarm.days.contains(diaCalendar)) alarm.days.remove(diaCalendar)
                 else alarm.days.add(diaCalendar)
                 tv.isSelected = alarm.days.contains(diaCalendar)
@@ -178,8 +191,8 @@ class EditAlarmActivity : AppCompatActivity() {
         fila.removeAllViews()
         ruletaViews.clear()
 
-        val nombres = arrayOf("Sin ruleta", "Ruleta", "Ruleta rusa")
-        for (modo in 0..2) {
+        val nombres = arrayOf("Botón", "Ruleta", "Rusa", "Sacudir")
+        for (modo in 0..3) {
             val tv = TextView(this)
             val lp = LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.WRAP_CONTENT, 1f)
             lp.setMargins(6, 0, 6, 0)
@@ -187,11 +200,13 @@ class EditAlarmActivity : AppCompatActivity() {
             tv.text = nombres[modo]
             tv.gravity = Gravity.CENTER
             tv.setPadding(0, 26, 0, 26)
-            tv.textSize = 12.5f
+            tv.textSize = 11.5f
             tv.setBackgroundResource(R.drawable.bg_day)
             tv.isSelected = alarm.roulette == modo
             pintarDia(tv)
             tv.setOnClickListener {
+                Fx.click(this)
+                tv.pop()
                 alarm.roulette = modo
                 ruletaViews.forEach {
                     it.isSelected = false
@@ -209,9 +224,10 @@ class EditAlarmActivity : AppCompatActivity() {
 
     private fun pintarPistaRuleta() {
         findViewById<TextView>(R.id.ruletaHint).text = when (alarm.roulette) {
-            1 -> "Al sonar aparece una ruleta de 6 casillas y solo una apaga la alarma. Giras hasta acertar. El botón Apagar desaparece; Posponer sigue disponible."
+            1 -> "Al sonar aparece una ruleta de 6 casillas y solo una apaga la alarma. Giras hasta acertar."
             2 -> "Ruleta rusa: 5 de las 6 casillas apagan la alarma y una no. Si cae en la mala, sigue sonando y giras de nuevo."
-            else -> "La alarma se apaga con el botón normal."
+            3 -> "Tendrás que sacudir el teléfono 12 veces seguidas para apagarla. Ideal para levantarte de verdad."
+            else -> "Se apaga con el botón normal, sin complicaciones."
         }
     }
 

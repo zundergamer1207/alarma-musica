@@ -42,7 +42,11 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    private var temaAplicado = 0
+
     override fun onCreate(savedInstanceState: Bundle?) {
+        Temas.aplicar(this)
+        temaAplicado = Prefs.tema(this)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
@@ -52,15 +56,29 @@ class MainActivity : AppCompatActivity() {
         today = findViewById(R.id.today)
 
         findViewById<Button>(R.id.btnNew).setOnClickListener {
+            it.pop()
+            Fx.tap(this)
             startActivity(Intent(this, EditAlarmActivity::class.java))
         }
-        findViewById<TextView>(R.id.btnPerms).setOnClickListener { checkPermissions(true) }
+        findViewById<TextView>(R.id.btnAjustes).setOnClickListener {
+            it.pop()
+            Fx.tap(this)
+            startActivity(Intent(this, AjustesActivity::class.java))
+        }
+        findViewById<TextView>(R.id.btnPerms).setOnClickListener {
+            Fx.tap(this)
+            checkPermissions(true)
+        }
 
         askNotificationPermission()
     }
 
     override fun onResume() {
         super.onResume()
+        if (Prefs.tema(this) != temaAplicado) {
+            recreate()
+            return
+        }
         AlarmScheduler.rescheduleAll(this)
         render()
         paintClock()
@@ -174,7 +192,7 @@ class MainActivity : AppCompatActivity() {
         empty.visibility = if (alarms.isEmpty()) View.VISIBLE else View.GONE
 
         val inflater = LayoutInflater.from(this)
-        for (a in alarms) {
+        for ((indice, a) in alarms.withIndex()) {
             val row = inflater.inflate(R.layout.item_alarm, list, false)
 
             row.findViewById<TextView>(R.id.itemTime).text = a.timeText()
@@ -194,6 +212,7 @@ class MainActivity : AppCompatActivity() {
             sw.setOnCheckedChangeListener(null)
             sw.isChecked = a.enabled
             sw.setOnCheckedChangeListener { _, checked ->
+                if (checked) Fx.ok(this) else Fx.click(this)
                 a.enabled = checked
                 AlarmStore.upsert(this, a)
                 AlarmScheduler.schedule(this, a)
@@ -201,6 +220,7 @@ class MainActivity : AppCompatActivity() {
             }
 
             row.findViewById<TextView>(R.id.itemDelete).setOnClickListener {
+                Fx.borrar(this)
                 AlarmScheduler.cancel(this, a.id)
                 AlarmStore.delete(this, a.id)
                 render()
@@ -208,11 +228,14 @@ class MainActivity : AppCompatActivity() {
             }
 
             row.setOnClickListener {
+                it.pop()
+                Fx.tap(this)
                 startActivity(
                     Intent(this, EditAlarmActivity::class.java).putExtra("id", a.id)
                 )
             }
 
+            row.entrar(indice)
             list.addView(row)
         }
     }
